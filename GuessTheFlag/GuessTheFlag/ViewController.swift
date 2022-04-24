@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
+    var numberOfAskedQuestions = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
     }
     
     func askQuestion(action: UIAlertAction!) {
+        numberOfAskedQuestions += 1
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         
@@ -43,23 +45,34 @@ class ViewController: UIViewController {
         title = countries[correctAnswer].uppercased()
     }
     
+    func restartGame(action: UIAlertAction!) {
+        numberOfAskedQuestions = 0
+        score = 0
+        
+        askQuestion(action: nil)
+    }
+    
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        var message: String
         
         if sender.tag == correctAnswer {
-            title = "Correct"
             score += 1
+            title = "Correct"
+            message = "Your score is \(score)"
         } else {
+            if score > 0 {
+                score -= 1
+            }
             title = "Wrong"
-            score -= 1
+            message = "You selected the flag of \(countries[sender.tag].uppercased()).\n\nYour score is \(score)"
+            
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        let ac = UIAlertController(title: title, message: numberOfAskedQuestions < 10 ? message : "You answered 10.question.\n\(message)", preferredStyle: .alert)
         
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        ac.addAction(UIAlertAction(title: numberOfAskedQuestions < 10 ? "Continue" : "Restart Game", style: .default, handler: numberOfAskedQuestions < 10 ? askQuestion : restartGame))
         
         present(ac, animated: true)
     }
-    
-
 }
