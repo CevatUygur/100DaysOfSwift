@@ -1,8 +1,8 @@
 //
 //  DetailViewController.swift
-//  StormViewer
+//  CountryFlags
 //
-//  Created by CEVAT UYGUR on 23.04.2022.
+//  Created by CEVAT UYGUR on 25.04.2022.
 //
 
 import UIKit
