@@ -15,6 +15,7 @@
 		CF31390A28187FBA0062C27E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF31390828187FBA0062C27E /* LaunchScreen.storyboard */; };
 		CF70F3B7281882B20044A00C /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70F3B6281882B20044A00C /* Petition.swift */; };
 		CF70F3B9281883090044A00C /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70F3B8281883090044A00C /* Petitions.swift */; };
+		CF70F3BB2818853E0044A00C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70F3BA2818853E0044A00C /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CF31390B28187FBA0062C27E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF70F3B6281882B20044A00C /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 		CF70F3B8281883090044A00C /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		CF70F3BA2818853E0044A00C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				CF3138FD28187FB90062C27E /* AppDelegate.swift */,
 				CF3138FF28187FB90062C27E /* SceneDelegate.swift */,
 				CF31390128187FB90062C27E /* ViewController.swift */,
+				CF70F3BA2818853E0044A00C /* DetailViewController.swift */,
 				CF70F3B6281882B20044A00C /* Petition.swift */,
 				CF70F3B8281883090044A00C /* Petitions.swift */,
 				CF31390328187FB90062C27E /* Main.storyboard */,
@@ -147,6 +150,7 @@
 				CF31390228187FB90062C27E /* ViewController.swift in Sources */,
 				CF70F3B7281882B20044A00C /* Petition.swift in Sources */,
 				CF3138FE28187FB90062C27E /* AppDelegate.swift in Sources */,
+				CF70F3BB2818853E0044A00C /* DetailViewController.swift in Sources */,
 				CF31390028187FB90062C27E /* SceneDelegate.swift in Sources */,
 				CF70F3B9281883090044A00C /* Petitions.swift in Sources */,
 			);
