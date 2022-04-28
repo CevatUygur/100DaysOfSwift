@@ -13,18 +13,19 @@ class ViewController: UIViewController {
     var remainingStepsLabel: UILabel!
     var allWords = [String]()
     var askedWord = ""
+    var usedLetters = ["?"]
     var answerLabelLetters = ["?", "?", "?", "?", "?", "?"] {
         didSet {
             print("Array guncellendi")
             loadView()
-            
         }
     }
+    
     var askedWordArray = [String]()
     
     let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
-    var remainingSteps = 10 {
+    var remainingSteps = 7 {
         didSet {
             remainingStepsLabel.text = "Remaining Steps: \(remainingSteps)"
         }
@@ -48,7 +49,6 @@ class ViewController: UIViewController {
         askedWordArray.insert(contentsOf: askedWord.map { String($0) }, at: 0)
         
         print(askedWord)
-        
     }
     
     override func loadView() {
@@ -108,6 +108,11 @@ class ViewController: UIViewController {
                     letterButton.frame = frame
                     letterButton.layer.borderColor = UIColor.lightGray.cgColor
                     letterButton.layer.borderWidth = 1
+                    if usedLetters.contains(letters[row * 6 + column]) {
+                        letterButton.layer.opacity = 0.6
+                        letterButton.isEnabled = false
+                        
+                    }
 
                     buttonsView.addSubview(letterButton)
                     letterButtons.append(letterButton)
@@ -128,16 +133,18 @@ class ViewController: UIViewController {
     }
     
     @objc func letterTapped(_ sender: UIButton) {
+        usedLetters.insert(String(sender.currentTitle!), at: 0)
+        remainingSteps -= 1
+        sender.layer.opacity = 0.6
+        sender.isEnabled = false
+        
         for letterIndex in 0..<6 {
             if sender.currentTitle == askedWordArray[letterIndex] {
                 answerLabelLetters[letterIndex] = askedWordArray[letterIndex]
-                sender.isHidden = true
+                sender.layer.opacity = 0.6
+                sender.isEnabled = false
             }
         }
-        
-        remainingSteps -= 1
-        sender.isHidden = true
-        
     }
 
 }
