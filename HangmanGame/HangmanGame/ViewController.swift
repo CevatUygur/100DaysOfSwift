@@ -59,6 +59,8 @@ class ViewController: UIViewController {
         remainingStepsLabel.translatesAutoresizingMaskIntoConstraints = false
         remainingStepsLabel.textAlignment = .right
         remainingStepsLabel.text = "Remaining Steps: \(remainingSteps)"
+        remainingStepsLabel.textColor = .black
+        remainingStepsLabel.font = UIFont.systemFont(ofSize: 21)
         view.addSubview(remainingStepsLabel)
         
         let buttonsView = UIView()
@@ -128,6 +130,7 @@ class ViewController: UIViewController {
             answerLetter.layer.borderColor = UIColor.lightGray.cgColor
             answerLetter.layer.borderWidth = 1
             answerLetter.backgroundColor = answerLetter.text == "?" ? .white : .green
+            answerLetter.textColor = .black
             answerView.addSubview(answerLetter)
         }
     }
@@ -145,6 +148,16 @@ class ViewController: UIViewController {
                 sender.isEnabled = false
             }
         }
+    }
+    
+    // Set the shouldAutorotate to False
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+
+    // Specify the orientation.
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+       return .portrait
     }
 
 }
