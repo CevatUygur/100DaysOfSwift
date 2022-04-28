@@ -15,3 +15,7 @@
 * [ShoppingList](https://github.com/CevatUygur/100DaysOfSwift/tree/main/ShoppingList)
 
 * [WhitehousePetitions](https://github.com/CevatUygur/100DaysOfSwift/tree/main/WhitehousePetitions)
+
+* [SwiftyWords](https://github.com/CevatUygur/100DaysOfSwift/tree/main/SwiftyWords)
+
+* [HangmanGame](https://github.com/CevatUygur/100DaysOfSwift/tree/main/HangmanGame)
