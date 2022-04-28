@@ -19,6 +19,10 @@ class ViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showCredits))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showFilter))
         
+        performSelector(inBackground: #selector(fetchJSON), with: nil)
+    }
+    
+    @objc func fetchJSON() {
         let urlString: String
         
         if navigationController?.tabBarItem.tag == 0 {
@@ -31,12 +35,11 @@ class ViewController: UITableViewController {
             if let data = try? Data(contentsOf: url) {
                 // we're OK to parse
                 parse(json: data)
-                filteredPetitions = petitions
                 return
             }
         }
         
-        showError()
+        performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
     }
     
     @objc func showCredits() {
@@ -68,19 +71,18 @@ class ViewController: UITableViewController {
     func submit(_ filterKey: String) {
         let lowerFilterKey = filterKey.lowercased()
         
-        filteredPetitions.removeAll(keepingCapacity: true)
+        filteredPetitions.removeAll()
         
         for petition in petitions {
             if petition.title.contains(lowerFilterKey) || petition.body.contains(lowerFilterKey) {
                 filteredPetitions.append(petition)
-                tableView.reloadData()
-            } else {
-                tableView.reloadData()
             }
+            
+            tableView.reloadData()
         }
     }
     
-    func showError() {
+    @objc func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed, please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
@@ -91,8 +93,13 @@ class ViewController: UITableViewController {
         
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
-            tableView.reloadData()
+            filteredPetitions = petitions
+            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        } else {
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
