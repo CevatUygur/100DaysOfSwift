@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         }
         
         if allWords.isEmpty {
-            allWords = ["ERROR!"]
+            allWords = ["SAMPLE"]
         }
         
         askedWord = allWords.randomElement()!.uppercased()
@@ -71,6 +71,11 @@ class ViewController: UIViewController {
         answerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(answerView)
         
+        let enterAnswer = UIButton(type: .system)
+        enterAnswer.translatesAutoresizingMaskIntoConstraints = false
+        enterAnswer.setTitle("ENTER YOUR ANSWER", for: .normal)
+        enterAnswer.addTarget(self, action: #selector(promptForAnswer), for: .touchUpInside)
+        view.addSubview(enterAnswer)
         
         
         NSLayoutConstraint.activate([
@@ -82,10 +87,13 @@ class ViewController: UIViewController {
             answerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             answerView.topAnchor.constraint(equalTo: remainingStepsLabel.bottomAnchor, constant: 100),
             
+            enterAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            enterAnswer.topAnchor.constraint(equalTo: answerView.bottomAnchor, constant: 50),
+            
             buttonsView.widthAnchor.constraint(equalToConstant: 300),
             buttonsView.heightAnchor.constraint(equalToConstant: 250),
             buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonsView.topAnchor.constraint(equalTo: answerView.bottomAnchor, constant: 100),
+            buttonsView.topAnchor.constraint(equalTo: enterAnswer.bottomAnchor, constant: 50),
             
             // more constraint to be added here!
         ])
@@ -115,7 +123,6 @@ class ViewController: UIViewController {
                         letterButton.isEnabled = false
                         
                     }
-
                     buttonsView.addSubview(letterButton)
                     letterButtons.append(letterButton)
                 }
@@ -148,6 +155,45 @@ class ViewController: UIViewController {
                 sender.isEnabled = false
             }
         }
+    }
+    
+    @objc func promptForAnswer() {
+        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) {
+            [weak self, weak ac] _ in
+            guard let answer = ac?.textFields?[0].text else { return }
+            self?.submit(answer)
+        }
+        
+        ac.addAction(submitAction)
+        present(ac, animated: true)
+    }
+    
+    func submit(_ answer: String) {
+        let upperAnswer = Array(answer.uppercased())
+        
+        if upperAnswer.count == 6 {
+            for letterIndex in 0..<6 {
+                if String(upperAnswer[letterIndex]) != askedWordArray[letterIndex] {
+                    showErrorMessage(errorTitle: "Wrong Answer", errorMessage: "You couldn't find the right solution.")
+                    break
+                } else {
+                    continue
+                }
+            }
+        } else {
+            showErrorMessage(errorTitle: "Wrong Answer", errorMessage: "You couldn't find the right solution.")
+        }
+        
+        showErrorMessage(errorTitle: "Congratulations", errorMessage: "You found the right solution.")
+    }
+    
+    func showErrorMessage(errorTitle: String, errorMessage: String) {
+        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
     
     // Set the shouldAutorotate to False
