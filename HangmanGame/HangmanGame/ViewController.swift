@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var answerLetterBG: UIColor = .white
     var letterButtons = [UIButton]()
     var remainingStepsLabel: UILabel!
     var allWords = [String]()
@@ -136,7 +137,8 @@ class ViewController: UIViewController {
             answerLetter.textAlignment = .center
             answerLetter.layer.borderColor = UIColor.lightGray.cgColor
             answerLetter.layer.borderWidth = 1
-            answerLetter.backgroundColor = answerLetter.text == "?" ? .white : .green
+            
+            answerLetter.backgroundColor = answerLetterBG
             answerLetter.textColor = .black
             answerView.addSubview(answerLetter)
         }
@@ -178,6 +180,18 @@ class ViewController: UIViewController {
             for letterIndex in 0..<6 {
                 if String(upperAnswer[letterIndex]) != askedWordArray[letterIndex] {
                     showErrorMessage(errorTitle: "Wrong Answer", errorMessage: "You couldn't find the right solution.")
+                    for letterIndex in 0..<6 {
+                        if answerLabelLetters[letterIndex] == "?" {
+                            answerLabelLetters[letterIndex] = askedWordArray[letterIndex]
+                            answerLetterBG = .red
+                            //sender.layer.opacity = 0.6
+                            //sender.isEnabled = false
+                            print("?")
+                        } else {
+                            answerLetterBG = .green
+                        }
+                    }
+                    
                     break
                 } else {
                     continue
@@ -185,9 +199,32 @@ class ViewController: UIViewController {
             }
         } else {
             showErrorMessage(errorTitle: "Wrong Answer", errorMessage: "You couldn't find the right solution.")
+            for letterIndex in 0..<6 {
+                if answerLabelLetters[letterIndex] == "?" {
+                    answerLetterBG = .red
+                    answerLabelLetters[letterIndex] = askedWordArray[letterIndex]
+                    //sender.layer.opacity = 0.6
+                    //sender.isEnabled = false
+                    print("Red")
+                } else {
+                    answerLetterBG = .green
+                    print("Green")
+                }
+            }
         }
         
         showErrorMessage(errorTitle: "Congratulations", errorMessage: "You found the right solution.")
+//        for letterIndex in 0..<6 {
+//            if answerLabelLetters[letterIndex] == "?" {
+//                answerLabelLetters[letterIndex] = askedWordArray[letterIndex]
+//                answerLetterBG = .green
+//                //sender.layer.opacity = 0.6
+//                //sender.isEnabled = false
+//                print("?")
+//            } else {
+//                answerLetterBG = .red
+//            }
+//        }
     }
     
     func showErrorMessage(errorTitle: String, errorMessage: String) {
