@@ -19,3 +19,5 @@
 * [SwiftyWords](https://github.com/CevatUygur/100DaysOfSwift/tree/main/SwiftyWords)
 
 * [HangmanGame](https://github.com/CevatUygur/100DaysOfSwift/tree/main/HangmanGame)
+
+* [Pachinko](https://github.com/CevatUygur/100DaysOfSwift/tree/main/Pachinko)
