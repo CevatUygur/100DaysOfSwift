@@ -14,6 +14,7 @@
 		CF13BA22281EDF4000C4C56F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF13BA20281EDF4000C4C56F /* Main.storyboard */; };
 		CF13BA24281EDF4200C4C56F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF13BA23281EDF4200C4C56F /* Assets.xcassets */; };
 		CF13BA27281EDF4200C4C56F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF13BA25281EDF4200C4C56F /* LaunchScreen.storyboard */; };
+		CF2CAC362825289B00132495 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF2CAC352825289B00132495 /* FireParticles.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		CF13BA21281EDF4000C4C56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF13BA23281EDF4200C4C56F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF13BA26281EDF4200C4C56F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF2CAC352825289B00132495 /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				CF13BA20281EDF4000C4C56F /* Main.storyboard */,
 				CF13BA23281EDF4200C4C56F /* Assets.xcassets */,
 				CF13BA25281EDF4200C4C56F /* LaunchScreen.storyboard */,
+				CF2CAC352825289B00132495 /* FireParticles.sks */,
 			);
 			path = Pachinko;
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			files = (
 				CF13BA22281EDF4000C4C56F /* Main.storyboard in Resources */,
 				CF13BA19281EDF4000C4C56F /* GameScene.sks in Resources */,
+				CF2CAC362825289B00132495 /* FireParticles.sks in Resources */,
 				CF13BA24281EDF4200C4C56F /* Assets.xcassets in Resources */,
 				CF13BA27281EDF4200C4C56F /* LaunchScreen.storyboard in Resources */,
 			);
