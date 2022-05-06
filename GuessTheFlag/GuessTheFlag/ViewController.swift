@@ -13,14 +13,37 @@ class ViewController: UIViewController {
     @IBOutlet var button3: UIButton!
     
     var countries = [String]()
-    var score = 0
+    
+    var score = 0 {
+        didSet {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score: \(score)", style: .plain, target: self, action: #selector(showScore))
+        }
+    }
+    
+    var highestScore = 0 {
+        didSet {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Highest Score: \(highestScore)", style: .plain, target: self, action: #selector(showHighestScore))
+        }
+    }
+    
     var correctAnswer = 0
     var numberOfAskedQuestions = 0
+    
+    var scoreKey = "scoreKey"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showScore))
+        //        UserDefaults
+        let defaults = UserDefaults.standard
+        
+        if let decodedHighScore = defaults.integer(forKey: scoreKey) as? Int {
+            highestScore = decodedHighScore
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score: \(score)", style: .plain, target: self, action: #selector(showScore))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Highest Score: \(highestScore)", style: .plain, target: self, action: #selector(showHighestScore))
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
@@ -60,6 +83,13 @@ class ViewController: UIViewController {
         
         if sender.tag == correctAnswer {
             score += 1
+            
+            if score >= highestScore {
+                highestScore = score
+            }
+            
+            save()
+            
             title = "Correct"
             message = "Your score is \(score)"
         } else {
@@ -85,5 +115,21 @@ class ViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: .none))
         
         present(ac, animated: true)
+    }
+    
+    @objc func showHighestScore() {
+        
+        let ac = UIAlertController(title: "Highest Score Alert", message: "Your Highest Score is \(highestScore)", preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: .none))
+        
+        present(ac, animated: true)
+    }
+    
+    //    UserDefaults
+    func save() {
+        let defaults = UserDefaults.standard
+        defaults.set(highestScore, forKey: scoreKey)
+        
     }
 }
