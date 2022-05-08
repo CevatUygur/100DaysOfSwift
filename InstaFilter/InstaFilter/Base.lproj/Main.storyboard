@@ -21,7 +21,6 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QXh-jr-7ub">
                                         <rect key="frame" x="10" y="10" width="354" height="595"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,13 +32,16 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NU-4r-wJD">
-                                <rect key="frame" x="28" y="766" width="70" height="21"/>
+                                <rect key="frame" x="20" y="766" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="blN-Lw-pmG">
-                                <rect key="frame" x="106" y="761" width="290" height="32"/>
+                                <rect key="frame" x="98" y="761" width="298" height="32"/>
+                                <connections>
+                                    <action selector="intensityChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="V5F-Y8-3qJ"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwU-gG-frf">
                                 <rect key="frame" x="20" y="798" width="120" height="44"/>
@@ -48,7 +50,12 @@
                                     <constraint firstAttribute="height" constant="44" id="jvT-R7-wCJ"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Change Filter"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change Filter">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="changeFilter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jGA-ZA-mJU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAT-3W-RU3">
                                 <rect key="frame" x="334" y="800" width="60" height="42"/>
@@ -56,7 +63,12 @@
                                     <constraint firstAttribute="width" constant="60" id="Xqn-13-9Pb"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U5B-zS-UjG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -68,9 +80,9 @@
                             <constraint firstItem="5NU-4r-wJD" firstAttribute="centerY" secondItem="blN-Lw-pmG" secondAttribute="centerY" id="GVK-9j-swd"/>
                             <constraint firstItem="TwU-gG-frf" firstAttribute="top" secondItem="5NU-4r-wJD" secondAttribute="bottom" constant="11" id="Myw-mo-Db0"/>
                             <constraint firstItem="TUS-nt-gYh" firstAttribute="leading" secondItem="TwU-gG-frf" secondAttribute="leading" id="NCk-ER-qJC"/>
+                            <constraint firstItem="5NU-4r-wJD" firstAttribute="leading" secondItem="TUS-nt-gYh" secondAttribute="leading" id="ark-7K-pR0"/>
                             <constraint firstItem="blN-Lw-pmG" firstAttribute="trailing" secondItem="uAT-3W-RU3" secondAttribute="trailing" id="fNA-ko-Oa6"/>
                             <constraint firstItem="uAT-3W-RU3" firstAttribute="top" secondItem="blN-Lw-pmG" secondAttribute="bottom" constant="8" id="fpk-Ph-I37"/>
-                            <constraint firstItem="5NU-4r-wJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="i1X-ut-l4q"/>
                             <constraint firstItem="TUS-nt-gYh" firstAttribute="trailing" secondItem="blN-Lw-pmG" secondAttribute="trailing" id="kIt-tm-AJx"/>
                             <constraint firstItem="TUS-nt-gYh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="t5z-eB-Gog"/>
                             <constraint firstItem="blN-Lw-pmG" firstAttribute="top" secondItem="TUS-nt-gYh" secondAttribute="bottom" constant="36" id="tgx-v2-zsy"/>
@@ -80,6 +92,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gOQ-S4-cW2"/>
+                    <connections>
+                        <outlet property="imageView" destination="QXh-jr-7ub" id="KQY-bO-kpl"/>
+                        <outlet property="intensity" destination="blN-Lw-pmG" id="oDf-tl-qFB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,9 +123,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
