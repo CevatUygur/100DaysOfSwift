@@ -23,3 +23,5 @@
 * [Pachinko](https://github.com/CevatUygur/100DaysOfSwift/tree/main/Pachinko)
 
 * [InstaFilter](https://github.com/CevatUygur/100DaysOfSwift/tree/main/InstaFilter)
+
+* [WhackPenguinGame](https://github.com/CevatUygur/100DaysOfSwift/tree/main/WhackPenguinGame)
