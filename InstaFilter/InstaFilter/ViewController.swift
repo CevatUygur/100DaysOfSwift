@@ -47,7 +47,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func changeFilter(_ sender: UIButton) {
         let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
         
-        ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default) {_ in
+            //setFilter(action: <#T##UIAlertAction#>)
+            sender.setTitle("CIBumpDistortion", for: .normal)
+        })
         ac.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
         ac.addAction(UIAlertAction(title: "CIPixellate", style: .default, handler: setFilter))
         ac.addAction(UIAlertAction(title: "CISepiaTone", style: .default, handler: setFilter))
@@ -74,6 +77,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
         applyProcessing()
+        
+        //sender.setTitle("Deneme", for: .normal)
         
     }
     
