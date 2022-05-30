@@ -84,10 +84,19 @@ class GameScene: SKScene {
                 slot.hide()
             }
             
+            gameScore.text = ""
+            
             let gameOver = SKSpriteNode(imageNamed: "gameOver")
             gameOver.position = CGPoint(x: 512, y: 384)
             gameOver.zPosition = 1
             addChild(gameOver)
+            
+            let gameOverScore = SKLabelNode(fontNamed: "Chalkduster")
+            gameOverScore.text = "Score: \(score)"
+            gameOverScore.position = CGPoint(x: 512, y: 300)
+            gameOverScore.fontSize = 48
+            gameOverScore.zPosition = 1
+            addChild(gameOverScore)
             return
         }
         
