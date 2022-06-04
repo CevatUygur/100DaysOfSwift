@@ -22,13 +22,29 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="hVq-Ev-pjN"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6o-wR-Qr0">
+                                <rect key="frame" x="291" y="88" width="123" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="map" catalog="system" title=" Map Type">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <color key="strokeColor" systemColor="opaqueSeparatorColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="mapTypeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m7p-VM-C5z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="qTl-aG-T2p" secondAttribute="bottom" constant="-34" id="8KN-aH-rlB"/>
                             <constraint firstItem="qTl-aG-T2p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CXF-V9-PXx"/>
+                            <constraint firstItem="D6o-wR-Qr0" firstAttribute="top" secondItem="qTl-aG-T2p" secondAttribute="top" constant="5" id="L6p-vv-gMb"/>
                             <constraint firstItem="qTl-aG-T2p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OaA-vD-Bbm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="D6o-wR-Qr0" secondAttribute="trailing" constant="5" id="ScP-R3-Lko"/>
                             <constraint firstItem="qTl-aG-T2p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cTh-OR-lVA"/>
                         </constraints>
                     </view>
@@ -61,6 +77,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="map" catalog="system" width="128" height="110"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

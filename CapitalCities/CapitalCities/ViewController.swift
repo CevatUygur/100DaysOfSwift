@@ -60,5 +60,35 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         
     }
+    
+    @IBAction func mapTypeButton(_ sender: UIButton) {
+        
+        let standartButton = UIAlertAction(title: "Standart", style: .default) { (action) in
+            //action
+            self.mapView.mapType = .standard
+        }
+        
+        let satteliteButton = UIAlertAction(title: "Sattelite", style: .default) { (action) in
+            //action
+            self.mapView.mapType = .satellite
+        }
+        
+        let hybridButton = UIAlertAction(title: "Hybrid", style: .default) { (action) in
+            //action
+            self.mapView.mapType = .hybrid
+        }
+        
+        let alert = UIAlertController(title: "Map Type", message: "Select Map Type", preferredStyle: .alert)
+        alert.addAction(standartButton)
+        alert.addAction(satteliteButton)
+        alert.addAction(hybridButton)
+        
+        self.present(alert, animated: true)
+    }
+    
+    @objc func changeMapType (mapType: MKMapType) -> MKMapType {
+        return mapType
+    }
+    
 }
 
