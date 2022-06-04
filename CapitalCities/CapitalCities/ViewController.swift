@@ -64,17 +64,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBAction func mapTypeButton(_ sender: UIButton) {
         
         let standartButton = UIAlertAction(title: "Standart", style: .default) { (action) in
-            //action
+            //action for standart map
             self.mapView.mapType = .standard
         }
         
         let satteliteButton = UIAlertAction(title: "Sattelite", style: .default) { (action) in
-            //action
+            //action for sattelite map
             self.mapView.mapType = .satellite
         }
         
         let hybridButton = UIAlertAction(title: "Hybrid", style: .default) { (action) in
-            //action
+            //action for hybrid map
             self.mapView.mapType = .hybrid
         }
         
