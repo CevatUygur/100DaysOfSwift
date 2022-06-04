@@ -145,7 +145,12 @@ class ViewController: UIViewController {
         
         currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
         activatedButtons.append(sender)
-        sender.isHidden = true
+
+        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+            sender.alpha = 0
+        }) { finished in
+            sender.isHidden = true
+        }
     }
     
     @objc func submitTapped(_ sender: UIButton) {
@@ -174,7 +179,6 @@ class ViewController: UIViewController {
             if score > 0 {
                 score -= 1
             }
-            
         }
     }
     
