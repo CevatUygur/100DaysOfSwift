@@ -68,6 +68,10 @@ class ViewController: UIViewController {
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
         title = countries[correctAnswer].uppercased()
+        
+        self.button1.transform = CGAffineTransform(scaleX: 1, y: 1)
+        self.button2.transform = CGAffineTransform(scaleX: 1, y: 1)
+        self.button3.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
     
     func restartGame(action: UIAlertAction!) {
@@ -80,6 +84,13 @@ class ViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
         var message: String
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: [], animations: {
+            self.button1.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+            self.button2.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+            self.button3.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+            }
+        )
         
         if sender.tag == correctAnswer {
             score += 1
