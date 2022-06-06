@@ -25,3 +25,7 @@
 * [InstaFilter](https://github.com/CevatUygur/100DaysOfSwift/tree/main/InstaFilter)
 
 * [WhackPenguinGame](https://github.com/CevatUygur/100DaysOfSwift/tree/main/WhackPenguinGame)
+
+* [Animation](https://github.com/CevatUygur/100DaysOfSwift/tree/main/Animation)
+
+* [SpaceRace](https://github.com/CevatUygur/100DaysOfSwift/tree/main/SpaceRace)
